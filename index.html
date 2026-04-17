@@ -87,5 +87,8 @@
     </div>
     <div id="toast" class="toast">Sincronizado ✅</div>
     <script src="script.js"></script>
+  self.addEventListener('fetch', (event) => {
+  event.respondWith(fetch(event.request));
+});  
 </body>
 </html>
