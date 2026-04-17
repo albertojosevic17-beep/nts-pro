@@ -1,20 +1,18 @@
 {
-    "short_name": "NTS PRO",
-      "name": "NTS Master PRO",
-        "description": "Sistema Encriptado NTS Master",
-          "icons": [
-              {
-                    "src": "https://cdn-icons-png.flaticon.com/512/1087/1087815.png",
-                          "type": "image/png",
-                                "sizes": "512x512",
-                                      "purpose": "any maskable"
-                                          }
-                                            ],
-                                              "start_url": "./index.html",
-                                                "background_color": "#000000",
-                                                  "display": "standalone",
-                                                    "scope": "./",
-                                                      "theme_color": "#ff8800"
-                                                      }
-                                                      
+    "name": "NTS Master PRO",
+      "short_name": "NTS PRO",
+        "description": "Sistema NTS",
+          "start_url": "index.html",
+            "display": "standalone",
+              "background_color": "#0b0b0f",
+                "theme_color": "#ff8800",
+                  "icons": [
+                      {
+                            "src": "favicon.ico",
+                                  "sizes": "64x64",
+                                        "type": "image/x-icon"
+                                            }
+                                              ]
+                                              }
+                                              
 }
