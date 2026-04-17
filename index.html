@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NTS Master PRO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="btnSairFocoGeral" class="btn-foco-float" onclick="toggleFoco()">✖ SAIR DO MODO FOCO</button>
+
+    <div id="telaLock" class="lock-screen">
+        <div class="logo-box-digital"><span>NTS</span><small>PRO</small></div>
+        <h3>Sistema Encriptado</h3>
+        <input type="password" id="pinInput" placeholder="PIN (Padrão: 1234)">
+        <button class="btn-add-pro" onclick="verificarPIN()">DESBLOQUEAR</button>
+        <div class="lock-footer">
+            <p onclick="configurarNovoPIN()">Alterar PIN</p>
+            <p onclick="resetTotal()" style="color: #ff5555; margin-top: 10px;">Reset de Fábrica</p>
+        </div>
+    </div>
+
+    <div id="appBody" style="display: none;">
+        <div class="app-banner"></div>
+        
+        <div id="telaPrincipal" class="conteudo">
+            <div class="header-dev">
+                <div class="logo-box-digital" id="logoDigital"><span>NTS</span><small>PRO</small></div>
+                <div class="header-info">
+                    <small>Master Workspace</small>
+                    <div class="nome-dev">NTS MASTER PRO</div>
+                </div>
+                <button onclick="location.reload()" class="btn-icon">🔒</button>
+            </div>
+
+            <div class="cartao search-zone">
+                <input type="text" id="inputBusca" placeholder="🔍 Pesquisar projeto..." oninput="carregarProjetos()">
+                <div class="filtros-row">
+                    <button class="btn-filtro active" onclick="filtrar('Todos', this)">Todos</button>
+                    <button class="btn-filtro" onclick="filtrar('Ideia', this)">Ideias</button>
+                    <button class="btn-filtro" onclick="filtrar('Desenvolvimento', this)">Dev</button>
+                    <button class="btn-filtro" onclick="filtrar('Concluído', this)">OK</button>
+                </div>
+            </div>
+
+            <div class="cartao">
+                <div class="input-stack">
+                    <input type="text" id="inputTarefa" placeholder="Novo Software...">
+                    <select id="selectCategoria">
+                        <option value="Ideia">💡 Ideia</option>
+                        <option value="Desenvolvimento">⚙️ Em Dev</option>
+                        <option value="Urgente">🔥 Urgente</option>
+                        <option value="Concluído">✅ Concluído</option>
+                    </select>
+                    <button class="btn-add-pro" onclick="adicionarTarefa()">+ CRIAR PROJETO</button>
+                </div>
+                <hr class="divisor">
+                <div id="listaTarefas"></div>
+            </div>
+            
+            <div class="footer-actions">
+                <button onclick="gerarBackup()">📤 EXPORTAR BACKUP</button>
+                <button onclick="importarBackup()">📥 IMPORTAR</button>
+            </div>
+        </div>
+
+        <div id="telaProjeto" class="conteudo" style="display: none;">
+            <div class="nav-notas">
+                <button onclick="fecharProjeto()" class="btn-voltar">⬅ VOLTAR</button>
+                <button onclick="toggleFoco()" class="btn-voltar" style="background:var(--bg-cartao)">👁 FOCO</button>
+                <button onclick="exportarParaTxt()" class="btn-save">TXT</button>
+            </div>
+            <h2 id="tituloProjeto">Projeto</h2>
+
+            <div class="cartao no-padding editor-container">
+                <div class="toolbar">
+                    <button onclick="execCmd('bold')">B</button>
+                    <button onclick="execCmd('italic')">I</button>
+                    <button onclick="execCmd('insertUnorderedList')">•</button>
+                    <input type="color" onchange="execCmd('foreColor', this.value)">
+                    <button onclick="execCmd('removeFormat')">🧹</button>
+                </div>
+                <div id="notasProjeto" class="editor-rich" contenteditable="true" oninput="salvarNotas()"></div>
+            </div>
+        </div>
+    </div>
+    <div id="toast" class="toast">Sincronizado ✅</div>
+    <script src="script.js"></script>
+</body>
+</html>
